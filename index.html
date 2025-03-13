@@ -39,45 +39,51 @@
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2">Flags</label>
         <div class="flex space-x-4">
-          <label class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
-            <input type="checkbox" id="flag-g" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" checked />
-            <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
-              G
-            </span>
-            <span class="hidden sm:inline text-gray-700 text-sm select-none">Global</span>
-            <div class="ml-1 group flex items-center">
+          <div class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
+            <label class="flex items-center">
+              <input type="checkbox" id="flag-g" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" checked />
+              <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
+                G
+              </span>
+              <span class="hidden sm:inline text-gray-700 text-sm select-none">Global</span>
+            </label>
+            <span class="ml-1 group flex items-center focus:outline-none" tabindex="0">
               <span class="icon-info text-(--color-info-icon) cursor-help"></span>
-              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 transition-opacity duration-300">
                 Global: Retain the lastIndex property, allowing iterative searching. Example: /abc/g
               </span>
-            </div>
-          </label>
-          <label class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
-            <input type="checkbox" id="flag-i" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
-            <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
-              I
             </span>
-            <span class="hidden sm:inline text-gray-700 text-sm select-none">Case Insensitive</span>
-            <div class="ml-1 group flex items-center">
-              <span class="icon-info text-(--color-info-icon) cursor-help" ></span>
-              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-13 opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+          <div class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
+            <label class="flex items-center">
+              <input type="checkbox" id="flag-i" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
+              <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
+                I
+              </span>
+              <span class="hidden sm:inline text-gray-700 text-sm select-none">Case Insensitive</span>
+            </label>
+            <span class="ml-1 group flex items-center focus:outline-none" tabindex="0">
+              <span class="icon-info text-(--color-info-icon) cursor-help"></span>
+              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 transition-opacity duration-300">
                 Case Insensitive: Perform case-insensitive matching. Example: /abc/i
               </span>
-            </div>
-          </label>
-          <label class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
-            <input type="checkbox" id="flag-m" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
-            <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
-              M
             </span>
-            <span class="hidden sm:inline text-gray-700 text-sm select-none">Multiline</span>
-            <div class="ml-1 group flex items-center">
+          </div>
+          <div class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
+            <label class="flex items-center">
+              <input type="checkbox" id="flag-m" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
+              <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
+                M
+              </span>
+              <span class="hidden sm:inline text-gray-700 text-sm select-none">Multiline</span>
+            </label>
+            <span class="ml-1 group flex items-center focus:outline-none" tabindex="0">
               <span class="icon-info text-(--color-info-icon) cursor-help"></span>
-              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 transition-opacity duration-300">
                 Multiline: Control the behavior of ^ and $ anchors. Example: /abc$/m
               </span>
-            </div>
-          </label>
+            </span>
+          </div>
         </div>
       </div>
       <div class="mb-6">
