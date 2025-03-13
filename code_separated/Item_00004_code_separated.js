@@ -110,6 +110,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     setTimeout(() => {
       copyTooltip.classList.remove("visible");
       copyTooltip.classList.remove("opacity-100");
+      copyTooltip.classList.add("invisible");
+      copyTooltip.classList.add("opacity-0");
       copyTooltip.innerText = "Copy";
     }, 1000);
   }
