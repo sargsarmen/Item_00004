@@ -33,8 +33,11 @@ Okay, I've created a regular expressions testing page using HTML, CSS, and Javas
         <label for="regex" class="block text-gray-700 text-sm font-bold mb-2">Regular Expression</label>
         <div class="flex relative">
           <input type="text" id="regex" placeholder="Enter your regex here" class="border-1 border-gray-300 rounded-md px-3 py-2 text-gray-700 w-full focus-visible:outline-(--color-highlight-text) placeholder:font-[300] [&.border-red-500]:focus-visible:outline-none" />
-          <button id="regex-copy" type="button" aria-label="Copy pattern" class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-gray-100 absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-1 text-muted-foreground hover:text-foreground transition-all duration-200">
-            <span class="icon-copy text-gray-500" ></span>
+          <button id="regex-copy" type="button" aria-label="Copy pattern" class="group inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-gray-100 absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 p-1 text-muted-foreground hover:text-foreground transition-all duration-200">
+            <span class="icon-copy text-gray-500"></span>
+            <span id="copy-tooltip" class="absolute z-10 invisible w-18 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+              Copy
+            </span>
           </button>
         </div>
         <div id="regex-error" class="text-red-600 text-sm mt-2 hidden"></div>
@@ -42,45 +45,51 @@ Okay, I've created a regular expressions testing page using HTML, CSS, and Javas
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2">Flags</label>
         <div class="flex space-x-4">
-          <label class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
-            <input type="checkbox" id="flag-g" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" checked />
-            <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
-              G
-            </span>
-            <span class="hidden sm:inline text-gray-700 text-sm select-none">Global</span>
-            <div class="ml-1 group flex items-center">
+          <div class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
+            <label class="flex items-center">
+              <input type="checkbox" id="flag-g" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" checked/>
+              <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
+                G
+              </span>
+              <span class="hidden sm:inline text-gray-700 text-sm select-none">Global</span>
+            </label>
+            <span class="ml-1 group flex items-center focus:outline-none" tabindex="0">
               <span class="icon-info text-(--color-info-icon) cursor-help"></span>
-              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 transition-opacity duration-300">
                 Global: Retain the lastIndex property, allowing iterative searching. Example: /abc/g
               </span>
-            </div>
-          </label>
-          <label class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
-            <input type="checkbox" id="flag-i" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
-            <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
-              I
             </span>
-            <span class="hidden sm:inline text-gray-700 text-sm select-none">Case Insensitive</span>
-            <div class="ml-1 group flex items-center">
-              <span class="icon-info text-(--color-info-icon) cursor-help" ></span>
-              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-13 opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+          <div class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
+            <label class="flex items-center">
+              <input type="checkbox" id="flag-i" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
+              <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
+                I
+              </span>
+              <span class="hidden sm:inline text-gray-700 text-sm select-none">Case Insensitive</span>
+            </label>
+            <span class="ml-1 group flex items-center focus:outline-none" tabindex="0">
+              <span class="icon-info text-(--color-info-icon) cursor-help"></span>
+              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 transition-opacity duration-300">
                 Case Insensitive: Perform case-insensitive matching. Example: /abc/i
               </span>
-            </div>
-          </label>
-          <label class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
-            <input type="checkbox" id="flag-m" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
-            <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
-              M
             </span>
-            <span class="hidden sm:inline text-gray-700 text-sm select-none">Multiline</span>
-            <div class="ml-1 group flex items-center">
+          </div>
+          <div class="flex items-center relative bg-(--color-result-bg) p-1 pr-2 pl-2 rounded-sm">
+            <label class="flex items-center">
+              <input type="checkbox" id="flag-m" class="mr-2 rounded cursor-pointer size-(--checkbox-size)" />
+              <span class="sm:hidden font-semibold text-gray-700 text-sm select-none mr-1">
+                M
+              </span>
+              <span class="hidden sm:inline text-gray-700 text-sm select-none">Multiline</span>
+            </label>
+            <span class="ml-1 group flex items-center focus:outline-none" tabindex="0">
               <span class="icon-info text-(--color-info-icon) cursor-help"></span>
-              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+              <span class="absolute z-10 invisible w-52 bg-white text-gray-700 text-sm shadow-sm rounded-md py-2 px-3 bottom-full left-1 opacity-0 group-hover:visible group-hover:opacity-100 group-focus:visible group-focus:opacity-100 transition-opacity duration-300">
                 Multiline: Control the behavior of ^ and $ anchors. Example: /abc$/m
               </span>
-            </div>
-          </label>
+            </span>
+          </div>
         </div>
       </div>
       <div class="mb-6">
@@ -102,6 +111,7 @@ Okay, I've created a regular expressions testing page using HTML, CSS, and Javas
         const regexCopyBtn = document.getElementById("regex-copy");
         const textInput = document.getElementById("text");
         const output = document.getElementById("output");
+        const copyTooltip = document.getElementById("copy-tooltip");
         const initialOutputDescription = document.getElementById("initial-output-description");
         const regexError = document.getElementById("regex-error");
         const flagG = document.getElementById("flag-g");
@@ -196,6 +206,18 @@ Okay, I've created a regular expressions testing page using HTML, CSS, and Javas
           regexInput.select();
           regexInput.setSelectionRange(0, 99999);
           document.execCommand("copy");
+
+          copyTooltip.classList.add("visible");
+          copyTooltip.classList.add("opacity-100");
+          copyTooltip.innerText = "Copied!";
+          
+          setTimeout(() => {
+            copyTooltip.classList.remove("visible");
+            copyTooltip.classList.remove("opacity-100");
+            copyTooltip.innerText = "Copy";
+          }, 1000);
+
+
         }
 
         regexInput.addEventListener("input", updateOutput);

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const regexCopyBtn = document.getElementById("regex-copy");
   const textInput = document.getElementById("text");
   const output = document.getElementById("output");
+  const copyTooltip = document.getElementById("copy-tooltip");
   const initialOutputDescription = document.getElementById(
     "initial-output-description"
   );
@@ -101,6 +102,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     regexInput.select();
     regexInput.setSelectionRange(0, 99999);
     document.execCommand("copy");
+
+    copyTooltip.classList.add("visible");
+    copyTooltip.classList.add("opacity-100");
+    copyTooltip.innerText = "Copied!";
+
+    setTimeout(() => {
+      copyTooltip.classList.remove("visible");
+      copyTooltip.classList.remove("opacity-100");
+      copyTooltip.innerText = "Copy";
+    }, 1000);
   }
 
   regexInput.addEventListener("input", updateOutput);
