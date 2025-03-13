@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           const matchIndex = match.index;
           const matchLength = matchText.length;
           resultHTML += escapeHTML(text.substring(lastIndex, matchIndex));
-          resultHTML += `<span class="highlight px-1 rounded">${matchText}</span>`;
+          resultHTML += `<span class="text-(--color-highlight-text) bg-(--color-highlight-bg) px-1 rounded">${matchText}</span>`;
           lastIndex = matchIndex + matchLength;
         }
         resultHTML += escapeHTML(text.substring(lastIndex));
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
           const matchIndex = match.index;
           const matchLength = matchText.length;
           resultHTML += escapeHTML(text.substring(0, matchIndex));
-          resultHTML += `<span class="highlight px-1 rounded">${matchText}</span>`;
+          resultHTML += `<span class="text-(--color-highlight-text) bg-(--color-highlight-bg) px-1 rounded">${matchText}</span>`;
           resultHTML += escapeHTML(text.substring(matchIndex + matchLength));
           output.innerHTML = resultHTML;
         } else {
